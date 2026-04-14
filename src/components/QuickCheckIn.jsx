@@ -64,12 +64,6 @@ export default function QuickCheckIn({ friendName, friendId, onCheckIn }) {
             animation: 'dropDown 0.3s ease',
           }}
         >
-          <style>{`
-            @keyframes dropDown {
-              from { opacity: 0; transform: translateX(-50%) translateY(-12px); }
-              to   { opacity: 1; transform: translateX(-50%) translateY(0); }
-            }
-          `}</style>
           <div className="flex items-center gap-3 bg-[#1F2937] text-white px-5 py-3.5 rounded-xl shadow-2xl whitespace-nowrap">
             <div className="w-7 h-7 rounded-full bg-[#2c523d] flex items-center justify-center shrink-0">
               <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">

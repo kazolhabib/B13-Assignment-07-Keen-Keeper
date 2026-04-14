@@ -159,7 +159,7 @@ export default function FriendDetailsClient({ id, friend }) {
         {/* ─── RIGHT COLUMN ─── */}
         <div className="w-full md:flex-1 flex flex-col gap-5">
 
-          {/* Stats Cards row */}
+          {/* Stats Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div className="bg-white rounded-lg border drop-shadow-sm px-4 py-5 lg:py-8 flex flex-col items-center gap-2 text-center">
               <span className="text-3xl font-semibold text-[#244D3F]">{friend.days_since_contact}</span>
@@ -175,7 +175,7 @@ export default function FriendDetailsClient({ id, friend }) {
             </div>
           </div>
 
-          {/* Relationship Goal Cards */}
+          {/* Relationship Cards */}
           <div className="bg-white rounded-lg drop-shadow-sm p-6">
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-lg lg:text-xl font-medium text-[#244D3F]">Relationship Goal</h2>

@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import Image from 'next/image';
 import PhoneCallIcon from '@/assets/PhoneCall.png';
 import ChatDotsIcon from '@/assets/ChatDots.png';
@@ -48,6 +48,7 @@ export default function TimelinePage() {
   const [filter, setFilter] = useState('All');
   const [mounted, setMounted] = useState(false);
   const [showToast, setShowToast] = useState(false);
+  const toastTimerRef = useRef(null);
 
   useEffect(() => {
     setMounted(true);
@@ -56,14 +57,20 @@ export default function TimelinePage() {
   }, []);
 
   const handleClearAll = () => {
-
     localStorage.removeItem('keenkeeper_timeline');
     setEntries([]);
 
+    // Clear any existing timer
+    if (toastTimerRef.current) {
+      clearTimeout(toastTimerRef.current);
+    }
+
     // Show success toast
     setShowToast(true);
-    setTimeout(() => setShowToast(false), 3000);
-
+    toastTimerRef.current = setTimeout(() => {
+      setShowToast(false);
+      toastTimerRef.current = null;
+    }, 3000);
   };
 
   if (!mounted) return null;
@@ -78,12 +85,6 @@ export default function TimelinePage() {
         <div
           className="fixed top-20 left-1/2 -translate-x-1/2 z-[9999] animate-[dropDown_0.3s_ease]"
         >
-          <style>{`
-            @keyframes dropDown {
-              from { opacity: 0; transform: translateX(-50%) translateY(-12px); }
-              to   { opacity: 1; transform: translateX(-50%) translateY(0); }
-            }
-          `}</style>
           <div className="flex items-center gap-3 bg-[#1F2937] text-white px-5 py-3.5 rounded-xl shadow-2xl whitespace-nowrap">
             <div className="w-7 h-7 rounded-full bg-[#ef4444] flex items-center justify-center shrink-0">
               <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
