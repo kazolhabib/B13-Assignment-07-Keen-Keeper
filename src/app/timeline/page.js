@@ -122,11 +122,11 @@ export default function TimelinePage() {
 
       {/* Filter Dropdown */}
       <div className="flex items-center justify-between flex-wrap gap-4 mb-6">
-        <div className="relative inline-block">
+        <div className="w-full sm:w-auto relative inline-block">
           <select
             value={filter}
             onChange={(e) => setFilter(e.target.value)}
-            className="appearance-none bg-white border border-[#E9E9E9] text-[#64748B] text-lg rounded-sm px-4 py-3 focus:outline-none focus:ring-1 focus:ring-[#2c523d] cursor-pointer min-w-[300px] sm:min-w-[345px]"
+            className="appearance-none bg-white border border-[#E9E9E9] text-[#64748B] text-lg rounded-sm px-4 py-3 focus:outline-none focus:ring-1 focus:ring-[#2c523d] cursor-pointer min-w-full sm:min-w-[345px]"
           >
             {FILTER_OPTIONS.map((opt) => (
               <option key={opt} value={opt}>
@@ -149,9 +149,9 @@ export default function TimelinePage() {
             placeholder="Search name or type..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full bg-white border border-[#E9E9E9] rounded-sm py-3 px-10 focus:outline-none focus:ring-1 focus:ring-[#2c523d] text-base placeholder:text-slate-400"
+            className="w-full bg-white border border-[#E9E9E9] rounded-sm py-3 px-10 focus:outline-none focus:ring-1 focus:ring-[#2c523d] text-lg text-[#64748B] placeholder:text-[#64748B]"
           />
-          <div className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">
+          <div className="absolute left-3 top-1/2 -translate-y-1/2 text-[#64748B]">
              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
              </svg>
