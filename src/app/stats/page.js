@@ -18,7 +18,7 @@ export default function StatsPage() {
     setMounted(true);
     const raw = localStorage.getItem('keenkeeper_timeline');
     const entries = raw ? JSON.parse(raw) : [];
-    
+
     const counts = entries.reduce((acc, entry) => {
       acc[entry.type] = (acc[entry.type] || 0) + 1;
       return acc;
@@ -55,7 +55,7 @@ export default function StatsPage() {
         {total === 0 ? (
           <div className="flex flex-col items-center justify-center text-center py-20">
             <div className="w-16 h-16 bg-slate-50 rounded-full flex items-center justify-center mb-4">
-               <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#CBD5E1" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#CBD5E1" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><line x1="12" y1="8" x2="12" y2="12" /><line x1="12" y1="16" x2="12.01" y2="16" /></svg>
             </div>
             <p className="text-[#64748B] text-base">No data available yet. Log some interactions to see your analytics!</p>
           </div>
@@ -71,7 +71,7 @@ export default function StatsPage() {
                   const percentage = entry.count / total;
                   const segmentLength = (circumference * percentage) - (stats.length > 1 ? gapSize : 0);
                   const strokeDashoffset = currentOffset;
-                  
+
                   currentOffset -= (circumference * percentage);
 
                   return (
@@ -91,19 +91,19 @@ export default function StatsPage() {
                 })}
               </svg>
 
-              
+
               <div className="absolute flex flex-col items-center justify-center text-center pointer-events-none">
                 <span className="text-2xl md:text-4xl font-bold text-[#1F2937]">{total}</span>
                 <span className="text-[8px] md:text-[10px] uppercase tracking-wider text-slate-400 font-bold">Total</span>
               </div>
             </div>
 
-            
+
             <div className="flex flex-wrap justify-center gap-6 mt-4">
               {stats.map(entry => (
                 <div key={entry.type} className="flex items-center gap-2">
-                  <div 
-                    className="w-2.5 h-2.5 rounded-full" 
+                  <div
+                    className="w-2.5 h-2.5 rounded-full"
                     style={{ backgroundColor: entry.color }}
                   />
                   <span className="text-sm font-medium text-slate-500">
