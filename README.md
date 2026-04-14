@@ -1,5 +1,5 @@
 # Keen Keeper
----
+
 A modern, high-performance relationship tracking application designed to help you nurture and track your social connections with ease.
 
 ## Project Overview
