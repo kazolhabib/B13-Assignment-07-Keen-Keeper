@@ -53,7 +53,7 @@ export default function Header() {
       <div className="flex justify-between items-center">
         <div className="flex items-center">
           {/* Logo */}
-          <Link href="/" className="flex items-center transition-transform hover:scale-105 active:scale-95 text-2xl font-bold tracking-tight">
+          <Link href="/" className="flex items-center transition-transform hover:scale-105 active:scale-95 text-2xl lg:text-[1.65rem] font-bold tracking-tight">
             <span className="text-[#1F2937]">Keen</span>
             <span className="text-[#244D3F]">Keeper</span>
           </Link>
