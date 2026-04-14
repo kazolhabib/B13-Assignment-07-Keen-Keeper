@@ -53,9 +53,9 @@ export default function Header() {
       <div className="flex justify-between items-center">
         <div className="flex items-center">
           {/* Logo */}
-          <Link href="/" className="text-xl md:text-2xl font-bold tracking-tight">
-            <span className="text-slate-800">Keen</span>
-            <span className="text-[#2c523d] font-semibold">Keeper</span>
+          <Link href="/" className="flex items-center transition-transform hover:scale-105 active:scale-95 text-2xl font-bold tracking-tight">
+            <span className="text-[#1F2937]">Keen</span>
+            <span className="text-[#244D3F]">Keeper</span>
           </Link>
         </div>
 
@@ -89,11 +89,10 @@ export default function Header() {
               <Link
                 key={href}
                 href={href}
-                className={`flex items-center gap-2 px-4 py-2 text-base font-medium rounded-md transition-colors ${
-                  active
+                className={`flex items-center gap-2 px-4 py-2 text-base font-medium rounded-md transition-colors ${active
                     ? 'bg-[#2c523d] text-white'
                     : 'text-slate-500 hover:text-slate-800 hover:bg-slate-50'
-                }`}
+                  }`}
               >
                 {icon(active)}
                 {label}
@@ -112,11 +111,10 @@ export default function Header() {
               <Link
                 key={href}
                 href={href}
-                className={`flex items-center gap-2 px-4 py-3 text-base font-medium rounded-md transition-colors ${
-                  active
+                className={`flex items-center gap-2 px-4 py-3 text-base font-medium rounded-md transition-colors ${active
                     ? 'bg-[#2c523d] text-white'
                     : 'text-slate-600 hover:bg-slate-50'
-                }`}
+                  }`}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {icon(active)}

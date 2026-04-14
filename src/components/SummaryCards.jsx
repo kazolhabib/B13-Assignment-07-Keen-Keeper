@@ -1,6 +1,30 @@
+'use client';
+
+import { useState, useEffect } from 'react';
 import friendsData from '@/data/friends.json';
 
 export default function SummaryCards() {
+  const [monthlyCount, setMonthlyCount] = useState(0);
+
+  useEffect(() => {
+    const raw = localStorage.getItem('keenkeeper_timeline');
+    const allInteractions = raw ? JSON.parse(raw) : [];
+    
+    const now = new Date();
+    const currentMonth = now.getMonth();
+    const currentYear = now.getFullYear();
+    
+    const count = allInteractions.filter(item => {
+      const itemDate = new Date(item.date);
+      // Validating that itemDate is valid and matches current month/year
+      return !isNaN(itemDate) && 
+             itemDate.getMonth() === currentMonth && 
+             itemDate.getFullYear() === currentYear;
+    }).length;
+    
+    setMonthlyCount(count);
+  }, []);
+
   const totalFriends = friendsData.length;
   const onTrackCount = friendsData.filter(f => f.status.toLowerCase() === 'on-track').length;
   const needAttentionCount = friendsData.filter(f => f.status.toLowerCase() === 'overdue').length;
@@ -9,7 +33,7 @@ export default function SummaryCards() {
     { label: 'Total Friends', value: totalFriends.toString() },
     { label: 'On Track', value: onTrackCount.toString() },
     { label: 'Need Attention', value: needAttentionCount.toString() },
-    { label: 'Interactions This Month', value: '12' },
+    { label: 'Interactions This Month', value: monthlyCount.toString() },
   ];
 
   return (
