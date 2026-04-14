@@ -1,19 +1,19 @@
 # Keen Keeper
-
+---
 A modern, high-performance relationship tracking application designed to help you nurture and track your social connections with ease.
 
-##  Project Overview
+## Project Overview
 
 **Keen Keeper** is a sophisticated dashboard for managing your social life. In a world of digital noise, Keen Keeper provides a clean space to log interactions, analyze your social patterns, and ensure you're staying connected with the people who matter most.
 
-##  Technologies Used
+## Technologies Used
 
-- **React.js/Next.js** - Build the UI
-- **Tailwind CSS + DaisyUI** - Styling and responsiveness
-- **Recharts** - Chart
-- **Local Storage** - Persistence of interaction data
+- **React.js/Next.js** - Build the UI.
+- **Tailwind CSS + DaisyUI** - Styling and responsiveness.
+- **Recharts** - Chart.
+- **Local Storage** - Persistence of interaction data.
 
-##  Key Features
+## Key Features
 
 1.  ** Friendship Analytics Dashboard**
     Visualize your interaction data with custom-built SVG donut charts. Track exactly how much time you spend on calls, texts, and meetups at a single glance.
