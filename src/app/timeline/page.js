@@ -46,6 +46,7 @@ function EntryIcon({ type }) {
 export default function TimelinePage() {
   const [entries, setEntries] = useState([]);
   const [filter, setFilter] = useState('All');
+  const [searchQuery, setSearchQuery] = useState('');
   const [mounted, setMounted] = useState(false);
   const [showToast, setShowToast] = useState(false);
   const toastTimerRef = useRef(null);
@@ -75,8 +76,13 @@ export default function TimelinePage() {
 
   if (!mounted) return null;
 
-  const filtered =
-    filter === 'All' ? entries : entries.filter((e) => e.type === filter);
+  const filtered = entries.filter((e) => {
+    const matchesFilter = filter === 'All' ? true : e.type === filter;
+    const matchesSearch = 
+      e.friendName.toLowerCase().includes(searchQuery.toLowerCase()) || 
+      e.type.toLowerCase().includes(searchQuery.toLowerCase());
+    return matchesFilter && matchesSearch;
+  });
 
   return (
     <div className="px-4 md:px-5 py-10 md:py-20 w-full">
@@ -109,26 +115,18 @@ export default function TimelinePage() {
         </div>
       )}
 
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-10">
         <h1 className="text-3xl md:text-5xl font-bold text-[#1F2937]">Timeline</h1>
 
-        {entries.length > 0 && (
-          <button
-            onClick={handleClearAll}
-            className="self-start md:self-auto text-sm font-semibold text-red-500 hover:text-red-700 bg-red-50 hover:bg-red-100 px-4 py-2 rounded-sm transition-all border border-red-100 active:scale-95"
-          >
-            Clear All
-          </button>
-        )}
       </div>
 
       {/* Filter Dropdown */}
-      <div className="mb-6">
+      <div className="flex items-center justify-between flex-wrap gap-4 mb-6">
         <div className="relative inline-block">
           <select
             value={filter}
             onChange={(e) => setFilter(e.target.value)}
-            className="appearance-none bg-white border border-[#E9E9E9] text-[#64748B] text-lg rounded-sm px-4 py-3 focus:outline-none focus:ring-1 focus:ring-[#2c523d] cursor-pointer min-w-[345px]"
+            className="appearance-none bg-white border border-[#E9E9E9] text-[#64748B] text-lg rounded-sm px-4 py-3 focus:outline-none focus:ring-1 focus:ring-[#2c523d] cursor-pointer min-w-[300px] sm:min-w-[345px]"
           >
             {FILTER_OPTIONS.map((opt) => (
               <option key={opt} value={opt}>
@@ -143,12 +141,37 @@ export default function TimelinePage() {
             </svg>
           </div>
         </div>
+            
+            {/* Search Field */}
+        <div className="relative w-full md:w-80">
+          <input
+            type="text"
+            placeholder="Search name or type..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="w-full bg-white border border-[#E9E9E9] rounded-sm py-3 px-10 focus:outline-none focus:ring-1 focus:ring-[#2c523d] text-base placeholder:text-slate-400"
+          />
+          <div className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">
+             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+               <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+             </svg>
+          </div>
+        </div>
+            
+        {entries.length > 0 && (
+          <button
+            onClick={handleClearAll}
+            className="self-start md:self-auto text-sm font-semibold text-red-500 hover:text-red-700 bg-red-50 hover:bg-red-100 px-4 py-2 rounded-sm transition-all border border-red-100 active:scale-95"
+          >
+            Clear All
+          </button>
+        )}
       </div>
 
 
       {filtered.length === 0 ? (
         <div className="bg-white border border-[#E9E9E9] rounded-sm p-12 text-center">
-          <p className="text-[#64748B] text-sm">No interactions found for this filter.</p>
+          <p className="text-[#64748B] text-base">No interactions found for this filter.</p>
         </div>
       ) : (
         <div className="flex flex-col gap-4">

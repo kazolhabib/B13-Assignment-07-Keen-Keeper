@@ -57,7 +57,7 @@ export default function StatsPage() {
             <div className="w-16 h-16 bg-slate-50 rounded-full flex items-center justify-center mb-4">
                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#CBD5E1" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
             </div>
-            <p className="text-slate-400">No data available yet. Log some interactions to see your analytics!</p>
+            <p className="text-[#64748B] text-base">No data available yet. Log some interactions to see your analytics!</p>
           </div>
         ) : (
           <div className="flex flex-col items-center gap-12">
