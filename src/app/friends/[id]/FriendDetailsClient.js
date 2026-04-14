@@ -27,7 +27,7 @@ export default function FriendDetailsClient({ id, friend }) {
     const raw = localStorage.getItem('keenkeeper_timeline');
     const allInteractions = raw ? JSON.parse(raw) : [];
     
-    // Filter for this specific friend and take the latest 4
+    // Filter for this specific friend
     const filtered = allInteractions
       .filter(item => item.friendId.toString() === id)
       .slice(0, 4);
@@ -175,7 +175,7 @@ export default function FriendDetailsClient({ id, friend }) {
             </div>
           </div>
 
-          {/* Relationship Goal Card */}
+          {/* Relationship Goal Cards */}
           <div className="bg-white rounded-lg drop-shadow-sm p-6">
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-lg lg:text-xl font-medium text-[#244D3F]">Relationship Goal</h2>
@@ -188,14 +188,14 @@ export default function FriendDetailsClient({ id, friend }) {
             </p>
           </div>
 
-          {/* Quick Check-In Card */}
+          {/* Quick Check-In Cards */}
           <QuickCheckIn 
             friendName={friend.name} 
             friendId={friend.id} 
             onCheckIn={loadInteractions}
           />
 
-          {/* Recent Interactions Card */}
+          {/* Recent Interactions Card List */}
           <div className="bg-white rounded-lg border drop-shadow-sm p-6">
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-lg lg:text-xl font-medium text-[#244D3F]">Recent Interactions</h2>
