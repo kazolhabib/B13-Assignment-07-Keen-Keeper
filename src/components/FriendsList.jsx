@@ -91,9 +91,9 @@ export default function FriendsList() {
               />
             </div>
             <h3 className="text-lg font-bold text-slate-800 leading-tight">{friend.name}</h3>
-            <span className="text-xs text-slate-400 mb-3 mt-1">{friend.days_since_contact}d ago</span>
+            <span className="text-xs text-slate-400 mb-2 mt-1">{friend.days_since_contact}d ago</span>
 
-            <div className="flex flex-wrap items-center justify-center gap-2 mb-4 min-h-[24px]">
+            <div className="flex flex-wrap items-center justify-center gap-2 mb-2 min-h-[24px]">
               {friend.tags.map((tag, idx) => (
                 <span
                   key={idx}
@@ -104,7 +104,7 @@ export default function FriendsList() {
               ))}
             </div>
 
-            <div className="mt-auto pt-2">
+            <div className="mt-auto">
               <span className={`text-xs font-bold px-4 py-1.5 rounded-full text-white inline-block ${getStatusColor(friend.status)}`}>
                 {formatStatus(friend.status)}
               </span>
