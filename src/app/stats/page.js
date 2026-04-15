@@ -93,8 +93,8 @@ export default function StatsPage() {
 
 
               <div className="absolute flex flex-col items-center justify-center text-center pointer-events-none">
-                <span className="text-2xl md:text-4xl font-bold text-[#1F2937]">{total}</span>
-                <span className="text-[8px] md:text-[10px] uppercase tracking-wider text-slate-400 font-bold">Total</span>
+                <span className="text-3xl md:text-5xl font-bold text-[#1F2937]">{total}</span>
+                <span className="text-xs md:text-sm uppercase tracking-wider text-[#64748B] font-bold">Total</span>
               </div>
             </div>
 
